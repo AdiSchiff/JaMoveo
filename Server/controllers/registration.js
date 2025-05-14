@@ -16,11 +16,12 @@ const signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Create new user
     const user = new User({
       username,
       password: hashedPassword,
-      instrument,
-      role: role === 'admin' ? 'admin' : 'player'
+      role: role === 'admin' ? 'admin' : 'player',
+      ...(role !== 'admin' && { instrument }) // only include instrument if not admin
     });
 
     await user.save();
