@@ -1,4 +1,5 @@
 let io = null;
+let currentSong = null;
 
 const setupSocket = (serverIO) => {
   io = serverIO;
@@ -15,16 +16,18 @@ const setupSocket = (serverIO) => {
     // Admin chose a song -> notify players
     socket.on('select-song', (songData) => {
       console.log(`🎵 Admin selected song: ${songData.name}`);
+      currentSong = songData;
       io.to('rehearsal-room').emit('song-selected', songData);
     });
 
-    // Start/stop scrolling
-    socket.on('toggle-scroll', (isScrolling) => {
-      io.to('rehearsal-room').emit('scroll-status', isScrolling);
+    // Client requests the current song
+    socket.on('get-current-song', () => {
+      socket.emit('current-song', currentSong);
     });
 
     // Admin ended the session
     socket.on('quit-session', () => {
+      currentSong = null;
       io.to('rehearsal-room').emit('session-ended');
     });
 
