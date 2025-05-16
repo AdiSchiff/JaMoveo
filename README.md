@@ -50,24 +50,6 @@ A real‑time collaborative music rehearsal **web application** that lets musici
 
 ---
 
-## Project Structure
-
-```text
-JaMoveo/
-├── client/              # React front‑end (Vite)
-│   ├── src/
-│   └── ...
-├── server/              # Express + Socket.io API
-│   ├── controllers/
-│   ├── models/
-│   └── ...
-├── render-build.sh      # Installs OS libs & Chrome for Puppeteer
-├── render.yaml          # Render service definition
-└── README.md
-```
-
----
-
 ## Local Development
 
 1. **Clone** the repo
@@ -95,12 +77,12 @@ JaMoveo/
 
 ## Environment Variables
 
-| Variable     | Purpose                                      |
-| ------------ | -------------------------------------------- |
-| `PORT`       | Port for Express (Render sets automatically) |
-| `MONGO_URI`  | MongoDB Atlas connection string              |
-| `CLIENT_URL` | Public URL of the front‑end                  |
-| `JWT_SECRET` | Secret for signing auth tokens               |
+| Variable            | Purpose                                      |
+| --------------------| -------------------------------------------- |
+| `PORT`              | Port for Express (Render sets automatically) |
+| `MONGO_URI`         | MongoDB Atlas connection string              |
+| `REACT_APP_API_URL` | Public URL of the front‑end                  |
+| `JWT_SECRET`        | Secret for signing auth tokens               |
 
 Create a `.env` file in both `client/` and `server/` as required.
 
