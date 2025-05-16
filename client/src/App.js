@@ -1,21 +1,30 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { initSocket } from './components/Socket';
+
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import PlayerMain from "./pages/PlayerMain";
-import AdminMain from "./pages/AdminMain";
-import Results from "./pages/Results";
-import Live from "./pages/Live";
+import AdminMain from './pages/AdminMain';
+import Results from './pages/Results';
+import PlayerMain from './pages/PlayerMain';
+import Live from './pages/Live';
+
 import PrivateRoute from './components/PrivateRoute';
-import AdminRoute from "./components/AdminRoute";
-import SongSelectedRoute from "./components/SongSelectedRoute";
-import { useEffect } from "react";
-import { initSocket } from "./components/Socket";
+import AdminRoute from './components/AdminRoute';
+import SongSelectedRoute from './components/SongSelectedRoute';
 
 function App() {
     useEffect(() => {
         const token = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+        const role = localStorage.getItem('role');
+
         if (token) {
-            initSocket(token);
+            const socket = initSocket(token);
+            socket.emit('join-session', {
+                username,
+                role
+            });
         }
     }, []);
 

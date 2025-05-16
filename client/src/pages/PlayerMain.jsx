@@ -16,11 +16,6 @@ const PlayerMain = () => {
             return;
         }
 
-        socket.emit('join-session', {
-            username,
-            role
-        });
-
         const onSongSelected = (songData) => {
             localStorage.setItem('currentSong', JSON.stringify(songData));
             navigate('/live');

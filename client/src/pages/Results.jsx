@@ -17,11 +17,6 @@ const ResultsPage = () => {
             return;
         }
 
-        socket.emit('join-session', {
-            username,
-            role
-        });
-
         socket.emit('select-song', song);
         localStorage.setItem('currentSong', JSON.stringify(song));
         navigate('/live');
