@@ -26,10 +26,18 @@ const searchTab4U = async (query) => {
       const name = songNameElement?.textContent.replace('/', '').trim() || '';
       const artist = artistNameElement?.textContent.trim() || '';
   
+      const imgEl = el.querySelector('.ruArtPhoto');
+      const imageStyle = imgEl?.getAttribute('style') || '';
+
+      const imageMatch = imageStyle.match(/url\(([^)]+)\)/);
+      const image = imageMatch ? 'https://www.tab4u.com' + imageMatch[1].replace(/['"]/g, '') : '';
+    
+
       return {
         slug,
         name,
-        artist
+        artist,
+        image
       };
     });
   });  
