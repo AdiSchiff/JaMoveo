@@ -4,7 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
-const socketIo = require('socket.io');
+const { Server } = require('socket.io');
 
 const authRoutes = require('./routes/registration');
 const songRoutes = require('./routes/songs');
@@ -12,9 +12,10 @@ const { setupSocket } = require('./utils/socketManager');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
+const io = new Server(server, {
   cors: {
-    origin: '*'
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "DELETE", "PUT"],
   }
 });
 
@@ -25,6 +26,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/songs', songRoutes);
 
 setupSocket(io);
+
 
 const PORT = process.env.PORT;
 mongoose.connect(process.env.MONGO_URI).then(() => {

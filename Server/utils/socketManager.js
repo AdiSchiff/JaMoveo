@@ -20,11 +20,6 @@ const setupSocket = (serverIO) => {
       io.to('rehearsal-room').emit('song-selected', songData);
     });
 
-    // Client requests the current song
-    socket.on('get-current-song', () => {
-      socket.emit('current-song', currentSong);
-    });
-
     // Admin ended the session
     socket.on('quit-session', () => {
       currentSong = null;
