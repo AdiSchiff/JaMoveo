@@ -5,7 +5,7 @@ let socket = null;
 
 export const initSocket = (token) => {
     if (!socket || !socket.connected) {
-        socket = io(process.env.REACT_APP_API_LOCAL_URL, {
+        socket = io(process.env.REACT_APP_API_URL, {
             auth: { token }
         });
     }
