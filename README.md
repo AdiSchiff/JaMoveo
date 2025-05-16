@@ -32,7 +32,8 @@ A real‑time collaborative music rehearsal **web application** that lets musici
 
 ### DevOps / Tooling
 
-* **Render** Web Service (Docker‑free)
+* **Render** Web Service (Docker‑free) for server
+* **Vercel** Web Service (Docker‑free) for client
 * **GitHub Actions** for continuous deployment
 * **ESLint** & **Prettier** for code quality
 
