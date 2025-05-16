@@ -8,16 +8,25 @@ import Live from "./pages/Live";
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from "./components/AdminRoute";
 import SongSelectedRoute from "./components/SongSelectedRoute";
+import { useEffect } from "react";
+import { initSocket } from "./components/Socket";
 
 function App() {
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            initSocket(token);
+        }
+    }, []);
+
     return (
         <Router>
             <Routes>
-                {/* Public routs */}
+                {/* Public routes */}
                 <Route path="/" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
 
-                {/* Protected pours */}
+                {/* Protected routes */}
                 <Route path="/admin" element={
                     <AdminRoute>
                         <AdminMain />
