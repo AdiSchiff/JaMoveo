@@ -27,6 +27,16 @@ app.use('/api/songs', songRoutes);
 
 setupSocket(io);
 
+try {
+  const os        = require('os');
+  const path      = require('path');
+  const puppeteer = require('puppeteer');            // v22+
+  console.log('👀 runtime $HOME       :', os.homedir());
+  console.log('👀 default cache dir  :', path.join(os.homedir(), '.cache', 'puppeteer'));
+  console.log('👀 executablePath()   :', puppeteer.executablePath());
+} catch (e) {
+  console.warn('⚠️  Puppeteer not installed yet or import failed:', e.message);
+}
 
 const PORT = process.env.PORT;
 mongoose.connect(process.env.MONGO_URI).then(() => {
