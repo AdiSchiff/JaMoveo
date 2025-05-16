@@ -88,14 +88,6 @@ Create a `.env` file in both `client/` and `server/` as required.
 
 ---
 
-## Deployment on Render
-
-1. **Create** a **Web Service** from the GitHub repo.
-2. **Build Command**: `./render-build.sh`
-3. **Start Command**: `node server/index.js`
-4. Add the environment variables listed above in **Settings → Environment**.
-5. Enable build cache. The script installs Chromium *once* and caches it under `/opt/render/project/.cache/puppeteer`.
-
 > **Puppeteer & Render**
 > Render containers run without full Linux namespaces, so Chromium must launch with the *no‑sandbox* flags **and** be installed during build:
 >
