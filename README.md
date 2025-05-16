@@ -50,24 +50,6 @@ A real‑time collaborative music rehearsal **web application** that lets musici
 
 ---
 
-## Project Structure
-
-```text
-JaMoveo/
-├── client/              # React front‑end (Vite)
-│   ├── src/
-│   └── ...
-├── server/              # Express + Socket.io API
-│   ├── controllers/
-│   ├── models/
-│   └── ...
-├── render-build.sh      # Installs OS libs & Chrome for Puppeteer
-├── render.yaml          # Render service definition
-└── README.md
-```
-
----
-
 ## Local Development
 
 1. **Clone** the repo
