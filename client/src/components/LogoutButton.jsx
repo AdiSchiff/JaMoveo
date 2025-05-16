@@ -13,22 +13,14 @@ const LogoutButton = () => {
     };
 
     return (
-        <button
-            onClick={handleLogout}
-            style={{
-                position: 'fixed',
-                top: '20px',
-                right: '20px',
-                padding: '0.5rem 1rem',
-                background: '#444',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
-                cursor: 'pointer'
-            }}
-        >
-            Logout
-        </button>
+        <div className="position-fixed top-0 end-0 m-3 z-3">
+            <button
+                onClick={handleLogout}
+                className="btn btn-outline-danger btn-sm"
+            >
+                Logout
+            </button>
+        </div>
     );
 };
 
