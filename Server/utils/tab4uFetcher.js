@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-// const chromium = require('chrome-aws-lambda');
 
 const fetchTab4USong = async (slug) => {
   const url = `https://www.tab4u.com/tabs/songs/${slug}.html`;
@@ -8,12 +7,6 @@ const fetchTab4USong = async (slug) => {
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
-//   const browser = await chromium.puppeteer.launch({
-//     args: chromium.args,
-//     defaultViewport: chromium.defaultViewport,
-//     executablePath: await chromium.executablePath,
-//     headless: chromium.headless,
-//   });
 
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle0' });
