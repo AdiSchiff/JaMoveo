@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const searchTab4U = async (query) => {
   const browser = await puppeteer.launch({
     headless: 'new',
-    executablePath: '/usr/bin/chromium-browser', // or '/usr/bin/google-chrome'
+    executablePath: '/opt/render/.cache/puppeteer/chrome/linux-136.0.7103.92/chrome-linux64/chrome',
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
