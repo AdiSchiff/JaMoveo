@@ -14,7 +14,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://ja-moveo-umber.vercel.app/",
+    origin: "https://ja-moveo-umber.vercel.app",
+    // origin: "http://localhost:3000",
     methods: ["GET", "POST", "DELETE", "PUT"],
   }
 });
@@ -27,16 +28,16 @@ app.use('/api/songs', songRoutes);
 
 setupSocket(io);
 
-try {
-  const os        = require('os');
-  const path      = require('path');
-  const puppeteer = require('puppeteer');            // v22+
-  console.log('👀 runtime $HOME       :', os.homedir());
-  console.log('👀 default cache dir  :', path.join(os.homedir(), '.cache', 'puppeteer'));
-  console.log('👀 executablePath()   :', puppeteer.executablePath());
-} catch (e) {
-  console.warn('⚠️  Puppeteer not installed yet or import failed:', e.message);
-}
+// try {
+//   const os        = require('os');
+//   const path      = require('path');
+//   const puppeteer = require('puppeteer');
+//   console.log('👀 runtime $HOME       :', os.homedir());
+//   console.log('👀 default cache dir  :', path.join(os.homedir(), '.cache', 'puppeteer'));
+//   console.log('👀 executablePath()   :', puppeteer.executablePath());
+// } catch (e) {
+//   console.warn('⚠️  Puppeteer not installed yet or import failed:', e.message);
+// }
 
 const PORT = process.env.PORT;
 mongoose.connect(process.env.MONGO_URI).then(() => {
@@ -46,5 +47,5 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running`);
 });
