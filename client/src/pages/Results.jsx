@@ -2,14 +2,12 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getSocket } from "../components/Socket";
 
-const ResultsPage = () => {
-    const { state } = useLocation();
+const ResultsPage = async () => {
+    const {state} = useLocation();
     const navigate = useNavigate();
     const results = state?.results || [];
-    const username = localStorage.getItem('username');
-    const role = localStorage.getItem('role');
 
-    const socket = getSocket();
+    const socket = await getSocket();
 
     const handleSelect = (song) => {
         if (!socket) {
@@ -46,7 +44,7 @@ const ResultsPage = () => {
                     <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={song.slug || song.id}>
                         <div
                             className="card h-100 shadow-sm"
-                            style={{ cursor: 'pointer' }}
+                            style={{cursor: 'pointer'}}
                             onClick={() => handleSelect(song)}
                         >
                             <img
