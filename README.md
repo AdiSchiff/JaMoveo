@@ -35,7 +35,6 @@ A real‑time collaborative music rehearsal **web application** that lets musici
 * **Render** Web Service (Docker‑free) for server
 * **Vercel** Web Service (Docker‑free) for client
 * **GitHub Actions** for continuous deployment
-* **ESLint** & **Prettier** for code quality
 
 ---
 
@@ -71,7 +70,9 @@ A real‑time collaborative music rehearsal **web application** that lets musici
    # Terminal 2 – Front‑end
    cd client && npm run dev
    ```
-4. Open `http://localhost:5173` (Vite default) in your browser.
+4. Open `http://localhost:3001` (Vite default) in your browser.
+
+5. In the server/index.js file inside the io cors choose the relevent client's URL.
 
 ---
 
