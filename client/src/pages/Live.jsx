@@ -4,7 +4,7 @@ import axios from 'axios';
 import LogoutButton from '../components/LogoutButton';
 import { getSocket } from '../components/Socket';
 
-const LivePage = async () => {
+const LivePage = () => {
     const navigate = useNavigate();
     const scrollRef = useRef(null);
     const [isScrolling, setIsScrolling] = useState(false);
@@ -16,7 +16,7 @@ const LivePage = async () => {
     const stored = JSON.parse(localStorage.getItem('currentSong') || '{}');
     const slug = stored?.slug;
 
-    const socket = await getSocket();
+    const socket = getSocket();
 
     // Fetch the selected song from the server
     useEffect(() => {
@@ -30,7 +30,7 @@ const LivePage = async () => {
                 const res = await axios.get(
                     `${process.env.REACT_APP_API_URL}/api/songs/fetch/${slug}`,
                     {
-                        headers: {Authorization: `Bearer ${token}`},
+                        headers: { Authorization: `Bearer ${token}` },
                     }
                 );
                 setSong(res.data);
@@ -64,7 +64,7 @@ const LivePage = async () => {
 
         const interval = setInterval(() => {
             if (scrollRef.current) {
-                scrollRef.current.scrollBy({top: 3, behavior: 'smooth'});
+                scrollRef.current.scrollBy({ top: 3, behavior: 'smooth' });
             }
         }, 100);
 
@@ -85,7 +85,7 @@ const LivePage = async () => {
 
     return (
         <div className="container py-4 d-flex flex-column min-vh-100">
-            <LogoutButton/>
+            <LogoutButton />
 
             <div
                 ref={scrollRef}
@@ -108,7 +108,7 @@ const LivePage = async () => {
                 ) : (
                     <div>
                         {mergeLyricsAndChords(song.lyrics, song.chords).map((line, idx) => (
-                            <pre key={idx} style={{marginBottom: '0.5rem'}}>
+                            <pre key={idx} style={{ marginBottom: '0.5rem' }}>
                               {line}
                             </pre>
                         ))}

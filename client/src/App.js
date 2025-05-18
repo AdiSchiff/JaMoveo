@@ -14,13 +14,13 @@ import AdminRoute from './components/AdminRoute';
 import SongSelectedRoute from './components/SongSelectedRoute';
 
 function App() {
-    useEffect(async () => {
+    useEffect(() => {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('username');
         const role = localStorage.getItem('role');
 
         if (token) {
-            const socket = await initSocket(token);
+            const socket = initSocket(token);
             socket.emit('join-session', {
                 username,
                 role

@@ -8,8 +8,8 @@ const PlayerMain = () => {
     const username = localStorage.getItem('username');
     const role = localStorage.getItem('role');
 
-    useEffect(async () => {
-        const socket = await getSocket();
+    useEffect(() => {
+        const socket = getSocket();
 
         if (!socket) {
             console.error('Socket not initialized');
