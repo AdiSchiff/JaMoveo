@@ -10,7 +10,7 @@ const search = async (req, res) => {
     res.json(results);
   } catch (err) {
     console.error('Error in search controller:', err.message);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'No results' });
   }
 };
 

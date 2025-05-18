@@ -12,7 +12,7 @@ const fetchTab4USong = async (slug) => {
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle0' });
 
-  await page.waitForSelector('td.song', { timeout: 50000 });
+  await page.waitForSelector('td.song', { timeout: 90000 });
 
   const data = await page.evaluate((slug) => {
     let name = '';
